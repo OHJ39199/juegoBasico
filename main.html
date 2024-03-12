@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Game</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body class="background">
+        <header>
+            <h1 id="tituloInicio" class="text-center m-5">Comienza la aventura!!!!</h1>
+            <h3 id="tituloSeleccion" class="text-center m-5">Selecciona a tu personaje</h3>
+            <h4 id="tituloExplicacion" class="text-center m-5">Consigue 10 aciertos para completar el juego, pero cuidado los fallos te restaran puntos.</h4>
+            <nav class="row ">
+                <div id="inicioJuego_caballero" class="col-md-4 text-center ">
+                    <img  class="img-fluid" src="img/caballero.png" alt="caballero" onclick="selectCaballero()" title="Seleccionar caballero para jugar letras desaparecidas">
+                    <h3 id="infoCaballero" class="m-4"> consigue adivinar las letras perdidas de cada palabra!!</h3>
+                </div>
+                <div id="inicioJuego_elfo" class="col-md-4 text-center ">
+                    <img  class="img-fluid" src="img/elfo.png" alt="elfo" onclick="selectElfo()" title="Seleccionar elfo para jugar con sumas">
+                    <h3 id="infoElfo" class="m-4">realiza todas las sumas correctamente</h3>
+                </div>
+                <div id="inicioJuego_mago" class="col-md-4 text-center ">
+                    <img  class="img-fluid" src="img/mago.png" alt="mago" onclick="selectMago()" title="Seleccionar mago para jugar a preguntas y respuestas">
+                    <h3 id="infoMago" class="m-40">resuelve todas las adivinanzas</h3>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div id="inicioJuego" ></div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
