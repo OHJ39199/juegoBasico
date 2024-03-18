@@ -1,20 +1,3 @@
-/*
-function selectCaballero() {
-    mostrarJuego("caballero");
-    ocultarNoSeleccionados(["elfo", "mago"]);
-}
-
-function selectElfo() {
-    mostrarJuego("elfo");
-    ocultarNoSeleccionados(["caballero", "mago"]);
-}
-
-function selectMago() {
-    mostrarJuego("mago");
-    ocultarNoSeleccionados(["caballero", "elfo"]);
-}
-*/
-
 //funcion seleccion de personaje y ocultar los no seleccionados
 function select(tipo) {
    switch (tipo) {
@@ -39,9 +22,11 @@ function mostrarJuego(tipo) {
     document.getElementById("tituloInicio").style.display = "none";
     document.getElementById("tituloSeleccion").style.display = "none";
     document.getElementById("tituloExplicacion").style.display = "none";
+
     document.getElementById("infoCaballero").style.display = "none";
     document.getElementById("infoElfo").style.display = "none";
     document.getElementById("infoMago").style.display = "none";
+
 
     let preguntas, titulo;
 
@@ -72,16 +57,16 @@ function mostrarJuego(tipo) {
     }
 
     //html  basico para inicio juego
-    let comienzo =`
-    <div class="container mt-5">
+    let comienzo = ` 
+    <div class="container mt-5">    
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h2 class="text-center">${titulo}</h2>
                 <hr>
                 <div id="preguntas" class="text-center">${preguntas}</div>
                 <input type="text" id="respuesta" class="form-control mt-3" placeholder="introduce tu respuesta">
-                <button onclick="comprobarRespuesta('${tipo}')" class="btn btn-secondary mt-3">comprobar</button>
-                <button onclick="mostrarJuego('${tipo}')" class="btn btn-secondary mt-3">Siguiente</button>
+                <button onclick="comprobarRespuesta('${tipo}')" class="btn btn-info mt-3">comprobar</button>
+                <button onclick="mostrarJuego('${tipo}')" class="btn btn-warning mt-3">Siguiente</button>
                 <div id="comprobacion" class="mt-3"></div>
                 <div>respuestas acertadas</div> 
                 <div id="contadorRespuestasCorrectas">${contadorRespuestasCorrectas}</div>
@@ -89,11 +74,22 @@ function mostrarJuego(tipo) {
         </div>
     </div>
     `;
+    //boton para salir del juego
+    let botonAbandono =`
+        <button class="btn btn-primary mt-2 text-center" onClick="recargarPaginaPrincipal()">Abandonar el juego en curso.</button>
+    `;
 
-    document.getElementById("inicioJuego").innerHTML = comienzo ;
+    document.getElementById("inicioJuego").innerHTML = comienzo;
+
+    //he intentado agregarlo con un getElementByClassName pero no se mostraba por igual en todas
+    document.getElementById("salidaCaballero").innerHTML = botonAbandono;
+    document.getElementById("salidaElfo").innerHTML = botonAbandono;
+    document.getElementById("salidaMago").innerHTML = botonAbandono;
 }
 
+
 function ocultarNoSeleccionados(juegos) {
+    //el foreach recorrera todos los tipos de juego y ocultara los no seleccionados
     juegos.forEach(juego => {
         document.getElementById(`inicioJuego_${juego}`).style.display = "none";
     });
@@ -155,9 +151,9 @@ function generarSumaElfo() {
     // Generar dos números aleatorios
     let num1 = Math.floor(Math.random() * 20) + 1;
     let num2 = Math.floor(Math.random() * 20) + 1;
-
+    //html
     let pregunta = `<h4>¿Cuánto es ${num1} + ${num2}?</h4>`;
-
+    //inicializacion comprobacion respuesta
     let respuestaCorrecta = num1 + num2;
 
     return { pregunta, respuestaCorrecta };
@@ -195,7 +191,7 @@ function generarPreguntasMago(){
     ];
     const indiceAleatorio = Math.floor(Math.random() * preguntasMago.length);
     let preguntaAleatoria = preguntasMago[indiceAleatorio];
-
+    //html
     let htmlMago = `
     <div class="pregunta">
         <h4>${preguntaAleatoria.pregunta}</h4>
@@ -208,6 +204,7 @@ function recargarPaginaPrincipal() {
     location.reload();
 }
 
+//inicializacion del contador de respuestas
 let contadorRespuestasCorrectas=0;
 
 //comprobacion de respuestas
