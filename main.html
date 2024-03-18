@@ -11,23 +11,23 @@
             <h1 id="tituloInicio" class="text-center m-5">Comienza la aventura!!!!</h1>
             <h3 id="tituloSeleccion" class="text-center m-5">Selecciona a tu personaje</h3>
             <h4 id="tituloExplicacion" class="text-center m-5">Consigue 10 aciertos para completar el juego, pero cuidado los fallos te restaran puntos.</h4>
+        </header>
+        <main>
             <nav class="row ">
-                <div id="inicioJuego_caballero" class="col-md-4 text-center ">
-                    <img  class="img-fluid" src="img/caballero.png" alt="caballero" onclick="selectCaballero()" title="Seleccionar caballero para jugar letras desaparecidas">
+                <div id="inicioJuego_caballero" class="col-md-4 mt-4 text-center">
+                    <img  class="img-fluid" src="img/caballero.png" alt="caballero" onclick="select('caballero')" title="Seleccionar caballero para jugar letras desaparecidas">
                     <h3 id="infoCaballero" class="m-4"> consigue adivinar las letras perdidas de cada palabra!!</h3>
                 </div>
                 <div id="inicioJuego_elfo" class="col-md-4 text-center ">
-                    <img  class="img-fluid" src="img/elfo.png" alt="elfo" onclick="selectElfo()" title="Seleccionar elfo para jugar con sumas">
+                    <img  class="img-fluid" src="img/elfo.png" alt="elfo" onclick="select('elfo')" title="Seleccionar elfo para jugar con sumas">
                     <h3 id="infoElfo" class="m-4">realiza todas las sumas correctamente</h3>
                 </div>
                 <div id="inicioJuego_mago" class="col-md-4 text-center ">
-                    <img  class="img-fluid" src="img/mago.png" alt="mago" onclick="selectMago()" title="Seleccionar mago para jugar a preguntas y respuestas">
-                    <h3 id="infoMago" class="m-40">resuelve todas las adivinanzas</h3>
+                    <img  class="img-fluid" src="img/mago.png" alt="mago" onclick="select('mago')" title="Seleccionar mago para jugar a preguntas y respuestas">
+                    <h3 id="infoMago" class="m-4">resuelve todas las adivinanzas</h3>
                 </div>
+                <div id="inicioJuego" class="col-md-6 mt m-4"></div>
             </nav>
-        </header>
-        <main>
-            <div id="inicioJuego" ></div>
         </main>
         <script src="script.js"></script>
     </body>

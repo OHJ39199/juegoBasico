@@ -1,4 +1,4 @@
-
+/*
 function selectCaballero() {
     mostrarJuego("caballero");
     ocultarNoSeleccionados(["elfo", "mago"]);
@@ -13,13 +13,35 @@ function selectMago() {
     mostrarJuego("mago");
     ocultarNoSeleccionados(["caballero", "elfo"]);
 }
+*/
 
+//funcion seleccion de personaje y ocultar los no seleccionados
+function select(tipo) {
+   switch (tipo) {
+       case "caballero":
+           mostrarJuego("caballero");
+           ocultarNoSeleccionados(["elfo", "mago"]);
+           break;
+       case "elfo":
+           mostrarJuego("elfo");
+           ocultarNoSeleccionados(["caballero", "mago"]);
+           break;
+       case "mago":
+           mostrarJuego("mago");
+           ocultarNoSeleccionados(["caballero", "elfo"]);
+           break;
+   }
+
+}
 function mostrarJuego(tipo) {
 
     //ocultar titulos de comienzo
     document.getElementById("tituloInicio").style.display = "none";
     document.getElementById("tituloSeleccion").style.display = "none";
     document.getElementById("tituloExplicacion").style.display = "none";
+    document.getElementById("infoCaballero").style.display = "none";
+    document.getElementById("infoElfo").style.display = "none";
+    document.getElementById("infoMago").style.display = "none";
 
     let preguntas, titulo;
 
@@ -141,8 +163,10 @@ function generarSumaElfo() {
     return { pregunta, respuestaCorrecta };
 }
 
+//preguntas Mago
 function generarPreguntasMago(){
-    //acertijos para el mago
+
+    //acertijos
     let preguntasMago = [
         {
             pregunta: "De qué color es el caballo blanco de Santiago?",
@@ -185,6 +209,8 @@ function recargarPaginaPrincipal() {
 }
 
 let contadorRespuestasCorrectas=0;
+
+//comprobacion de respuestas
 function comprobarRespuesta(tipo) {
     const respuesta = document.getElementById("respuesta").value.trim().toLowerCase();
     let respuestaCorrecta;
@@ -202,6 +228,7 @@ function comprobarRespuesta(tipo) {
             break;
     }
 
+    //mesages correcto, incremento y finalizacion
     if (respuesta === respuestaCorrecta) {
         comprobacion.innerHTML = "<p class='text-White text-bg-success'>Correcto!</p>";
         contadorRespuestasCorrectas++;
@@ -211,11 +238,15 @@ function comprobarRespuesta(tipo) {
             alert("¡Enhorabuena! Has alcanzado 10 respuestas correctas.");
             recargarPaginaPrincipal();
         }
-
-
+    //mensages de incorrecto, decremento y finalizacion
     } else {
         comprobacion.innerHTML = "<p class='text-white text-bg-danger'>Incorrecto. intentalo de nuevo!</p>";
         contadorRespuestasCorrectas--;
         document.getElementById("contadorRespuestasCorrectas").textContent = contadorRespuestasCorrectas;
+
+        if (contadorRespuestasCorrectas === -10) {
+            alert("¡OOOHHH NOOOO! Has fallado 10 respuestas necesitas practicar.");
+            recargarPaginaPrincipal();
+        }
     }
 }
